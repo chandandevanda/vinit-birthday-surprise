@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vinit Birthday Surprise 🎂</title>
+
+<style>
+*{
+  box-sizing:border-box;
+}
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:Arial,sans-serif;
+  background:linear-gradient(135deg,#141e30,#243b55);
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  overflow:hidden;
+}
+.card{
+  width:90%;
+  max-width:420px;
+  padding:35px 22px;
+  border-radius:25px;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.2);
+  box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+h1{
+  font-size:32px;
+  margin:10px 0;
+}
+h2{
+  font-size:25px;
+  margin:15px 0;
+}
+p{
+  font-size:17px;
+  line-height:1.6;
+}
+button{
+  margin-top:18px;
+  padding:13px 24px;
+  border:0;
+  border-radius:30px;
+  font-size:17px;
+  font-weight:bold;
+  background:white;
+  color:#243b55;
+}
+#surprise{
+  display:none;
+  margin-top:20px;
+}
+.emoji{
+  font-size:55px;
+}
+.balloon{
+  position:absolute;
+  font-size:35px;
+  animation:float 5s infinite;
+}
+.b1{left:8%;top:15%}
+.b2{right:8%;top:25%}
+.b3{left:15%;bottom:12%}
+.b4{right:15%;bottom:10%}
+
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-25px)}
+}
+</style>
+</head>
+
+<body>
+
+<div class="balloon b1">🎈</div>
+<div class="balloon b2">🎈</div>
+<div class="balloon b3">🎈</div>
+<div class="balloon b4">🎈</div>
+
+<div class="card">
+  <div class="emoji">🎂✨</div>
+
+  <h1>Happy Birthday!</h1>
+  <h2>Vinit 🎉</h2>
+
+  <p>
+    Aaj ka din bahut special hai,<br>
+    kyunki aaj tumhara birthday hai! 🥳
+  </p>
+
+  <button onclick="showSurprise()">
+    🎁 Open Your Surprise
+  </button>
+
+  <div id="surprise">
+    <h2>🎉 Surprise! 🎉</h2>
+    <p>
+      Wishing you lots of happiness,<br>
+      success and beautiful moments. ❤️
+    </p>
+    <p>
+      Keep smiling and keep shining! ✨
+    </p>
+    <div class="emoji">🎂🎈🎁🥳</div>
+  </div>
+</div>
+
+<script>
+function showSurprise(){
+  document.getElementById("surprise").style.display="block";
+}
+</script>
+
+</body>
+</html>
