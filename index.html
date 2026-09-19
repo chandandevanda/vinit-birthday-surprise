@@ -2,120 +2,512 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vinit Birthday Surprise 🎂</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Vinit's Secret Birthday 🎂</title>
 
 <style>
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
+
 body{
-  margin:0;
-  min-height:100vh;
-  font-family:Arial,sans-serif;
-  background:linear-gradient(135deg,#141e30,#243b55);
-  color:white;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  overflow:hidden;
+ margin:0;
+ min-height:100vh;
+ overflow:hidden;
+ font-family:Arial,sans-serif;
+ color:white;
+ text-align:center;
+ background:
+ radial-gradient(circle at 20% 20%,#6c2b8f55,transparent 30%),
+ radial-gradient(circle at 80% 80%,#3155a855,transparent 30%),
+ linear-gradient(135deg,#09051a,#170c32,#07152d);
+ display:flex;
+ justify-content:center;
+ align-items:center;
 }
+
+.screen{
+ display:none;
+ width:100%;
+ padding:20px;
+ animation:appear .7s ease;
+}
+
+.screen.active{display:block}
+
+@keyframes appear{
+ from{opacity:0;transform:scale(.94) translateY(15px)}
+ to{opacity:1;transform:scale(1) translateY(0)}
+}
+
 .card{
-  width:90%;
-  max-width:420px;
-  padding:35px 22px;
-  border-radius:25px;
-  background:rgba(255,255,255,.12);
-  border:1px solid rgba(255,255,255,.2);
-  box-shadow:0 10px 30px rgba(0,0,0,.3);
+ width:min(92%,430px);
+ margin:auto;
+ padding:32px 22px;
+ border-radius:30px;
+ background:rgba(255,255,255,.09);
+ border:1px solid rgba(255,255,255,.18);
+ box-shadow:0 20px 70px rgba(0,0,0,.55);
+ backdrop-filter:blur(15px);
 }
+
+.glow{
+ text-shadow:0 0 10px #fff,0 0 25px #c46cff;
+}
+
 h1{
-  font-size:32px;
-  margin:10px 0;
+ font-size:36px;
+ margin:12px 0;
 }
+
 h2{
-  font-size:25px;
-  margin:15px 0;
+ font-size:27px;
+ margin:14px 0;
 }
+
 p{
-  font-size:17px;
-  line-height:1.6;
+ font-size:17px;
+ line-height:1.7;
+ color:#f4eaff;
 }
+
 button{
-  margin-top:18px;
-  padding:13px 24px;
-  border:0;
-  border-radius:30px;
-  font-size:17px;
-  font-weight:bold;
-  background:white;
-  color:#243b55;
+ border:0;
+ padding:14px 25px;
+ border-radius:30px;
+ margin-top:18px;
+ font-size:16px;
+ font-weight:bold;
+ color:#20102f;
+ background:white;
+ box-shadow:0 0 20px rgba(255,255,255,.35);
+ cursor:pointer;
 }
-#surprise{
-  display:none;
-  margin-top:20px;
+
+button:active{
+ transform:scale(.94);
 }
-.emoji{
-  font-size:55px;
+
+.big{
+ font-size:90px;
+ animation:float 2s infinite ease-in-out;
 }
-.balloon{
-  position:absolute;
-  font-size:35px;
-  animation:float 5s infinite;
-}
-.b1{left:8%;top:15%}
-.b2{right:8%;top:25%}
-.b3{left:15%;bottom:12%}
-.b4{right:15%;bottom:10%}
 
 @keyframes float{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-25px)}
+ 50%{transform:translateY(-14px) rotate(3deg)}
+}
+
+.stars{
+ position:fixed;
+ inset:0;
+ pointer-events:none;
+}
+
+.star{
+ position:absolute;
+ animation:twinkle 2s infinite alternate;
+ opacity:.7;
+}
+
+@keyframes twinkle{
+ from{opacity:.2;transform:scale(.7)}
+ to{opacity:1;transform:scale(1.2)}
+}
+
+.progress{
+ width:100%;
+ height:5px;
+ background:#ffffff22;
+ border-radius:10px;
+ margin-top:25px;
+ overflow:hidden;
+}
+
+.bar{
+ height:100%;
+ width:0%;
+ background:white;
+ transition:1s;
+}
+
+.type{
+ min-height:110px;
+}
+
+.cake{
+ font-size:90px;
+ animation:cake 1s infinite alternate;
+}
+
+@keyframes cake{
+ to{transform:scale(1.08)}
+}
+
+.finalName{
+ font-size:42px;
+ font-weight:900;
+ line-height:1.15;
+ background:linear-gradient(90deg,#fff,#ffbdf5,#fff);
+ -webkit-background-clip:text;
+ color:transparent;
+ text-shadow:none;
+}
+
+.confetti{
+ position:fixed;
+ top:-30px;
+ font-size:22px;
+ pointer-events:none;
+ animation:fall 4s linear forwards;
+ z-index:10;
+}
+
+@keyframes fall{
+ to{
+  transform:translateY(110vh) rotate(720deg);
+  opacity:0;
+ }
+}
+
+#musicNote{
+ font-size:13px;
+ opacity:.65;
+ margin-top:15px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="balloon b1">🎈</div>
-<div class="balloon b2">🎈</div>
-<div class="balloon b3">🎈</div>
-<div class="balloon b4">🎈</div>
+<div class="stars" id="stars"></div>
+
+
+<!-- SCREEN 1 -->
+
+<div class="screen active" id="s1">
 
 <div class="card">
-  <div class="emoji">🎂✨</div>
 
-  <h1>Happy Birthday!</h1>
-  <h2>Vinit 🎉</h2>
+<div class="big">🎁</div>
 
-  <p>
-    Aaj ka din bahut special hai,<br>
-    kyunki aaj tumhara birthday hai! 🥳
-  </p>
+<h1 class="glow">Hey Vinit... 👀</h1>
 
-  <button onclick="showSurprise()">
-    🎁 Open Your Surprise
-  </button>
+<p>
+Aaj ek normal birthday wish nahi milegi.
+</p>
 
-  <div id="surprise">
-    <h2>🎉 Surprise! 🎉</h2>
-    <p>
-      Wishing you lots of happiness,<br>
-      success and beautiful moments. ❤️
-    </p>
-    <p>
-      Keep smiling and keep shining! ✨
-    </p>
-    <div class="emoji">🎂🎈🎁🥳</div>
-  </div>
+<p>
+Kyunki maine tere liye kuch thoda sa
+<strong>alag</strong> banaya hai. 😅
+</p>
+
+<button onclick="start()">
+TAP TO ENTER ✨
+</button>
+
+<div id="musicNote">
+🎵 Sound starts after tapping
 </div>
 
+</div>
+
+</div>
+
+
+<!-- SCREEN 2 -->
+
+<div class="screen" id="s2">
+
+<div class="card">
+
+<div class="big">🔐</div>
+
+<h2>Secret Birthday File</h2>
+
+<p>
+Access granted only for...
+</p>
+
+<h1 class="glow">VINIT 🎉</h1>
+
+<p>
+Are you ready for the surprise?
+</p>
+
+<button onclick="go(3)">
+UNLOCK 🔓
+</button>
+
+</div>
+
+</div>
+
+
+<!-- SCREEN 3 -->
+
+<div class="screen" id="s3">
+
+<div class="card">
+
+<div class="big">💌</div>
+
+<h2>A message for you...</h2>
+
+<div class="type" id="typeText"></div>
+
+<button onclick="go(4)">
+KEEP GOING →
+</button>
+
+</div>
+
+</div>
+
+
+<!-- SCREEN 4 -->
+
+<div class="screen" id="s4">
+
+<div class="card">
+
+<div class="big">🎁</div>
+
+<h2>Wait...</h2>
+
+<p>
+There is still one more thing hidden here. 👀
+</p>
+
+<button onclick="openGift()">
+OPEN THE GIFT 🎁
+</button>
+
+<div class="progress">
+<div class="bar" id="bar"></div>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- SCREEN 5 -->
+
+<div class="screen" id="s5">
+
+<div class="card">
+
+<div class="cake">🎂</div>
+
+<h2>Make a Wish, Vinit ✨</h2>
+
+<p>
+Close your eyes for a second...
+<br>
+and make a wish. 🌟
+</p>
+
+<button onclick="finalWish()">
+BLOW THE CANDLES 🕯️
+</button>
+
+</div>
+
+</div>
+
+
+<!-- FINAL -->
+
+<div class="screen" id="s6">
+
+<div class="card">
+
+<div class="big">🥳</div>
+
+<div class="finalName">
+HAPPY<br>
+BIRTHDAY<br>
+VINIT! 🎉
+</div>
+
+<p>
+May this year bring you
+lots of happiness, success,
+fun and unforgettable memories. ❤️
+</p>
+
+<p>
+Keep smiling.<br>
+Keep shining. ✨
+</p>
+
+<p>
+<strong>And haan... surprise kaisa laga? 😅🎁</strong>
+</p>
+
+</div>
+
+</div>
+
+
 <script>
-function showSurprise(){
-  document.getElementById("surprise").style.display="block";
+
+/* Stars */
+
+for(let i=0;i<45;i++){
+
+let s=document.createElement("span");
+
+s.className="star";
+s.innerText="✦";
+
+s.style.left=Math.random()*100+"%";
+s.style.top=Math.random()*100+"%";
+s.style.fontSize=(Math.random()*10+6)+"px";
+s.style.animationDelay=Math.random()*2+"s";
+
+document.getElementById("stars").appendChild(s);
+
 }
+
+
+/* Music */
+
+let audio;
+
+function playMusic(){
+
+if(audio) return;
+
+audio=new(window.AudioContext||window.webkitAudioContext)();
+
+let notes=[
+261.63,293.66,329.63,392,
+329.63,293.66,261.63,
+329.63,392,440,
+392,329.63,293.66,261.63
+];
+
+notes.forEach((frequency,i)=>{
+
+let osc=audio.createOscillator();
+let gain=audio.createGain();
+
+osc.type="sine";
+osc.frequency.value=frequency;
+
+let time=audio.currentTime+i*.32;
+
+gain.gain.setValueAtTime(.0001,time);
+gain.gain.exponentialRampToValueAtTime(.10,time+.04);
+gain.gain.exponentialRampToValueAtTime(.0001,time+.28);
+
+osc.connect(gain);
+gain.connect(audio.destination);
+
+osc.start(time);
+osc.stop(time+.30);
+
+});
+
+}
+
+
+/* Screen change */
+
+function go(n){
+
+document.querySelectorAll(".screen")
+.forEach(function(x){
+x.classList.remove("active");
+});
+
+document.getElementById("s"+n)
+.classList.add("active");
+
+}
+
+
+/* Start */
+
+function start(){
+
+playMusic();
+go(2);
+
+}
+
+
+/* Typewriter */
+
+let message=
+"Vinit, kuch log bas dost hote hain... "+
+"aur kuch log apni yaadon ka special part ban jaate hain. "+
+"Bas aaj ke din itna kehna tha — "+
+"khush reh, mast reh aur hamesha smile karta reh. ❤️";
+
+let pos=0;
+
+function typeWriter(){
+
+if(pos<message.length){
+
+document.getElementById("typeText").innerHTML=
+message.substring(0,pos+1);
+
+pos++;
+
+setTimeout(typeWriter,35);
+
+}
+
+}
+
+document.getElementById("s3")
+.addEventListener("transitionend",typeWriter);
+
+
+/* Gift */
+
+function openGift(){
+
+document.getElementById("bar").style.width="100%";
+
+setTimeout(function(){
+go(5);
+},1100);
+
+}
+
+
+/* Final */
+
+function finalWish(){
+
+go(6);
+
+for(let i=0;i<100;i++){
+
+let c=document.createElement("div");
+
+c.className="confetti";
+
+c.innerText=[
+"🎉","🎊","✨","🎈","💜","⭐","🥳"
+][Math.floor(Math.random()*7)];
+
+c.style.left=Math.random()*100+"vw";
+c.style.animationDelay=Math.random()*2+"s";
+
+document.body.appendChild(c);
+
+setTimeout(function(){
+c.remove();
+},5000);
+
+}
+
+}
+
 </script>
 
 </body>
-  </html>
+</html>
